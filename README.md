@@ -1,13 +1,7 @@
 # MySQL-HA-Cloud - A Highly-Available Self-Hosted MySQL Cloud Container Orchestrator
 <a href="https://github.com/serjplus/mysql-ha-cloud/actions/workflows/build.yml">
-  <img alt="Build Status" src="https://github.com/jnidzwetzki/mysql-ha-cloud/actions/workflows/build.yml/badge.svg">
+  <img alt="Build Status" src="https://github.com/serjplus/mysql-ha-cloud/actions/workflows/build.yml/badge.svg">
 </a>
-<a href="http://makeapullrequest.com">
- <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
-</a><a href="https://gitter.im/mysql-ha-cloud/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link">
-  <img alt="Join the chat at https://gitter.im/mysql-ha-cloud/Lobby" src="https://badges.gitter.im/Join%20Chat.svg">
-</a><a href="https://hub.docker.com/repository/docker/jnidzwetzki/mysql-ha-cloud"><img src="https://img.shields.io/docker/stars/jnidzwetzki/mysql-ha-cloud.svg">
- </a>
 
 <br>
 This project provides a container image for a highly-available MySQL installation that can be deployed to Kubernetes or Docker Swarm environments.
@@ -22,7 +16,7 @@ This project provides a container image for a highly-available MySQL installatio
 
 The `mysql-ha-cloud` container image contains a [MySQL 8.0 Server](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/), [Consul](https://www.hashicorp.com/products/consul) for the service discovery, health checks of the nodes, and the MySQL replication leader election. [ProxySQL](https://proxysql.com/) provides the entry point for the client; the software forwards the connections of the client to the MySQL nodes. Write requests are send to the replication leader, and read requests are sent to the replication follower. In addition, [MinIO](https://min.io/) is used as backup storage and to bootstrap the replication follower. Backups are created by using [XtraBackup](https://www.percona.com/software/mysql-database/percona-xtrabackup) without creating table locks. 
 
-Container Orchestrators like [Kubernetes](https://kubernetes.io/) or [Docker Swarm](https://docs.docker.com/get-started/swarm-deploy/) can be used to deploy the provided [container image](https://hub.docker.com/repository/docker/jnidzwetzki/mysql-ha-cloud).
+Container Orchestrators like [Kubernetes](https://kubernetes.io/) or [Docker Swarm](https://docs.docker.com/get-started/swarm-deploy/) can be used to deploy the provided [container image](https://hub.docker.com/repository/docker/xddev/mysql-ha-cloud).
 
 The complete architecture is highly-available; failing and newly started containers are handled automatically. A new replication leader is automatically elected if the current leader fails. ProxySQL redirects database connections transparently to the nodes; the complete distribution and fail-over logic are hidden from the client applications. The solution is also horizontal scalable, new MySQL replication follower nodes can be added, and the query load is automatically distributed to these nodes. 
 
@@ -66,4 +60,4 @@ Of course, there are other projects that also focus on highly available MySQL sy
 
 ## What's next?
 * If you like the project, please give it a star on GitHub!
-* For more information see [https://github.com/jnidzwetzki](https://github.com/jnidzwetzki).
+* For more information see [https://github.com/serjplus](https://github.com/serjplus).

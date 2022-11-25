@@ -159,7 +159,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: mysql
-        image: jnidzwetzki/mysql-ha-cloud:latest 
+        image: xddev/mysql-ha-cloud:latest 
         ports:
         - containerPort: 3306
           name: mysql

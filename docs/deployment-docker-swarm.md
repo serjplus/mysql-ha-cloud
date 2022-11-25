@@ -13,7 +13,7 @@ When one Docker node fails, the aborted Docker containers are re-started on the 
 
 ### Step 1 - Setup Docker
 
-Setup your [Docker Swarm](https://docs.docker.com/engine/swarm/). The following commands have to be executed on all nodes of the cluster. As an alternative, you can use the following [Ansible Playbook](https://github.com/jnidzwetzki/ansible-playbooks/tree/main/docker) to install Docker on the cluster.
+Setup your [Docker Swarm](https://docs.docker.com/engine/swarm/). The following commands have to be executed on all nodes of the cluster. As an alternative, you can use the following [Ansible Playbook](https://github.com/serjplus/ansible-playbooks/tree/main/docker) to install Docker on the cluster.
 
 ```bash
 apt-get update
@@ -61,10 +61,10 @@ __Note__: Per default, manager nodes also execute Docker containers. This can le
 
 ### Step 3 - Deploy the Services
 
-The Deployment of the services to Docker Swarm is done with a [Compose file](https://github.com/jnidzwetzki/mysql-ha-cloud/tree/main/deployment). This file descibes the services of the Docker Swarm cluster. The file can be downloaded and deployed as follows:
+The Deployment of the services to Docker Swarm is done with a [Compose file](https://github.com/serjplus/mysql-ha-cloud/tree/main/deployment). This file descibes the services of the Docker Swarm cluster. The file can be downloaded and deployed as follows:
 
 ```bash
-wget https://raw.githubusercontent.com/jnidzwetzki/mysql-ha-cloud/main/deployment/mysql-docker-swarm.yml
+wget https://raw.githubusercontent.com/serjplus/mysql-ha-cloud/main/deployment/mysql-docker-swarm.yml
 docker stack deploy --compose-file mysql-docker-swarm.yml mysql
 ```
 
@@ -74,11 +74,11 @@ After the deployment is done, the stack should look as follows:
 $ docker stack ps mysql
 ID                  NAME                IMAGE                                      NODE                DESIRED STATE       CURRENT STATE                  ERROR               PORTS
 zywtlmvswfz1        mysql_minio.1       minio/minio:RELEASE.2020-10-18T21-54-12Z   debian10-vm4        Running             Running 53 seconds ago                             
-v8hks8xa6vub        mysql_mysql.1       jnidzwetzki/mysql-ha-cloud:latest          debian10-vm2        Running             Preparing about a minute ago                       
+v8hks8xa6vub        mysql_mysql.1       serjplus/mysql-ha-cloud:latest          debian10-vm2        Running             Preparing about a minute ago                       
 bhsvp0muev51        mysql_consul.1      consul:1.8                                 debian10-vm1        Running             Running about a minute ago                         *:8500->8500/tcp
-4no74auuqpv0        mysql_mysql.2       jnidzwetzki/mysql-ha-cloud:latest          debian10-vm3        Running             Preparing about a minute ago                       
+4no74auuqpv0        mysql_mysql.2       serjplus/mysql-ha-cloud:latest          debian10-vm3        Running             Preparing about a minute ago                       
 t1dan93zja0e        mysql_consul.2      consul:1.8                                 debian10-vm2        Running             Running about a minute ago                         *:8500->8500/tcp
-0b3pyj32v5db        mysql_mysql.3       jnidzwetzki/mysql-ha-cloud:latest          debian10-vm1        Running             Preparing about a minute ago                       
+0b3pyj32v5db        mysql_mysql.3       serjplus/mysql-ha-cloud:latest          debian10-vm1        Running             Preparing about a minute ago                       
 gptp9fpmkw4r        mysql_consul.3      consul:1.8                                 debian10-vm4        Running             Running about a minute ago                         *:8500->8500/tcp
 i2egrq1cbieu        mysql_consul.4      consul:1.8                                 debian10-vm5        Running             Running 32 seconds ago                             *:8500->8500/tcp
 vvsf1wwb1zr2        mysql_consul.5      consul:1.8                                 debian10-vm3        Running             Running about a minute ago                         *:8500->8500/tcp
@@ -86,7 +86,7 @@ vvsf1wwb1zr2        mysql_consul.5      consul:1.8                              
 $ docker stack services mysql
 ID                  NAME                MODE                REPLICAS               IMAGE                                      PORTS
 0v8qhwaaawx5        mysql_minio         replicated          1/1                    minio/minio:RELEASE.2020-10-18T21-54-12Z   *:9000->9000/tcp
-pro64635i2j4        mysql_mysql         replicated          3/3 (max 1 per node)   jnidzwetzki/mysql-ha-cloud:latest          
+pro64635i2j4        mysql_mysql         replicated          3/3 (max 1 per node)   serjplus/mysql-ha-cloud:latest          
 ya9luugwcri4        mysql_consul        replicated          5/5 (max 1 per node)   consul:1.8       
 ```
 

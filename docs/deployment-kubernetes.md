@@ -7,7 +7,7 @@ To reproduce this example, you need a Kubernetes cluster with at least three wor
 * One primary MySQL server (read/write) and two read-only MySQL replicas. 
 * An instance of [ProxySQL](https://github.com/sysown/proxysql) is available on every MySQL-Server. ProxySQL is used to access the MySQL installations. Write requests (e.g., `INSERT` or `UPDATE`) are automatically send to the replication leader, and read requests (e.g., `SELECT`) are sent to the replication follower.
 
-__Note:__ If you don't have a local Kubernetes installation, you can use [kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/) to setup such a cluster locally. In addition, you find a proper Ansible Playbook [here](https://github.com/jnidzwetzki/ansible-playbooks/tree/main/playbooks) to create such a cluster with `Docker` or `Container.io` as runtime.
+__Note:__ If you don't have a local Kubernetes installation, you can use [kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/) to setup such a cluster locally. In addition, you find a proper Ansible Playbook [here](https://github.com/serjplus/ansible-playbooks/tree/main/playbooks) to create such a cluster with `Docker` or `Container.io` as runtime.
 
 ### Step 1 - Check your Kubernetes installation
 
@@ -26,10 +26,10 @@ In this example, the node `debian10-k8s-vm1` is the contol node for the cluster.
 
 ### Step 2 - Deploy the Services
 
-Please download the [configuration](https://raw.githubusercontent.com/jnidzwetzki/mysql-ha-cloud/main/deployment/mysql-kubernetes-iscsi.yml) for Kubernetes and adjust the configuration according to your local settings. For example, when you use the persistent iSCSI volume, the iSCSI target settings need to be adjusted. 
+Please download the [configuration](https://raw.githubusercontent.com/serjplus/mysql-ha-cloud/main/deployment/mysql-kubernetes-iscsi.yml) for Kubernetes and adjust the configuration according to your local settings. For example, when you use the persistent iSCSI volume, the iSCSI target settings need to be adjusted. 
 
 ```bash
-$ curl https://raw.githubusercontent.com/jnidzwetzki/mysql-ha-cloud/main/deployment/mysql-kubernetes-iscsi.yml --output mysql-kubernetes-iscsi.yml
+$ curl https://raw.githubusercontent.com/serjplus/mysql-ha-cloud/main/deployment/mysql-kubernetes-iscsi.yml --output mysql-kubernetes-iscsi.yml
 $ kubectl create -f mysql-kubernetes-iscsi.yml
 secret/chap-secret created
 deployment.apps/minio created

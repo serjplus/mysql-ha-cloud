@@ -14,7 +14,7 @@ from mcm.proxysql import Proxysql
 
 parser = argparse.ArgumentParser(
     description="MySQL cluster manager",
-    epilog="For more info, please see: https://github.com/jnidzwetzki/mysql-ha-cloud")
+    epilog="For more info, please see: https://github.com/serjplus/mysql-ha-cloud")
 
 AVAILABLE_OPERATIONS = "(join_or_bootstrap, mysql_backup, mysql_restore, mysql_start, mysql_stop)"
 parser.add_argument('operation', metavar='operation',

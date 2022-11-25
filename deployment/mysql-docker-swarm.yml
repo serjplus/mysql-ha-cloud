@@ -33,7 +33,7 @@ services:
          mode: host
 
   mysql:
-    image: jnidzwetzki/mysql-ha-cloud:latest
+    image: xddev/mysql-ha-cloud:latest
     networks:
        backend:
     environment:
