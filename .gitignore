@@ -1,3 +1,6 @@
 .venv
 .env
 settings.json
+distrib/consul_1.9.17_linux_amd64.zip
+distrib/mc
+distrib/percona-xtrabackup-80_8.0.30-23-1.buster_amd64.deb
