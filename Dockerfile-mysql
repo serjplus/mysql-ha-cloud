@@ -5,7 +5,7 @@
 #
 #################
 
-FROM mysql:8.0.31
+FROM mysql:8.0.21
 
 SHELL ["/bin/bash", "-c"]
 WORKDIR /cluster
@@ -35,9 +35,9 @@ RUN \
     # \
     # Install percona XtraBackup \
     # \
-    apt-get install -y libdbd-mysql-perl libcurl4-openssl-dev rsync libev4 && \
+    apt-get install -y libdbd-mysql-perl libcurl4-openssl-dev rsync libev4
     #wget https://www.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.14/binary/debian/buster/x86_64/percona-xtrabackup-80_8.0.14-1.buster_amd64.deb -O /tmp/xtrabackup.deb && \ 
-    wget https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.30-23/binary/debian/buster/x86_64/percona-xtrabackup-80_8.0.30-23-1.buster_amd64.deb -O /tmp/xtrabackup.deb && \ 
+    RUN wget https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.30-23/binary/debian/buster/x86_64/percona-xtrabackup-80_8.0.30-23-1.buster_amd64.deb -O /tmp/xtrabackup.deb && \ 
     dpkg -i /tmp/xtrabackup.deb && \
     rm /tmp/xtrabackup.deb && \
     # \
